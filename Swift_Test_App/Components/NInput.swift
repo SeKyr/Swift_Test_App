@@ -13,7 +13,7 @@ struct NInput: View {
                 self.onStart(n)
             } )
                 .buttonStyle(.borderedProminent)
-                .tint(.blue)
+                .tint(Color(red: 33 / 255, green: 150 / 255, blue: 243 / 255, opacity: 100))
         }.onChange(of: isReset){ newValue in
             n = 0
         }

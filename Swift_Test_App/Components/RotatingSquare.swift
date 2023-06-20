@@ -7,7 +7,7 @@ struct RotatingSquare: View {
     var body: some View {
         Rectangle()
             .frame(width: length, height: length)
-            .foregroundColor(.blue)
+            .foregroundColor(Color(red: 33 / 255, green: 150 / 255, blue: 243 / 255, opacity: 100))
             .border(Color.black, width: 1)
             .rotationEffect(rotationAngle)
             .onAppear {

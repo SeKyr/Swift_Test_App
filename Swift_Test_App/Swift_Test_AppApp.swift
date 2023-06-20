@@ -7,7 +7,7 @@ struct Swift_Test_AppApp: App {
     
     init() {
         let coloredAppearance = UINavigationBarAppearance()
-          coloredAppearance.backgroundColor = .blue
+        coloredAppearance.backgroundColor = UIColor(red: 33 / 255, green: 150 / 255, blue: 243 / 255, alpha: 100)
           coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
           
           UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
@@ -27,11 +27,7 @@ struct Swift_Test_AppApp: App {
                         Image(systemName: "minus.forwardslash.plus")
                         Text("Calculation-View")
                     }.tag(1)
-                }.navigationBarTitleDisplayMode(.inline)
-                    .navigationBarItems(
-                        leading:
-                            HStack { Text("Swift Test App").font(.headline).foregroundColor(.white)}
-                    )
+                }.navigationBarTitle("Swift Test App").navigationBarTitleDisplayMode(.inline).tint(.red)
             }
         }
     }
