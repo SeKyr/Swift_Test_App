@@ -13,7 +13,7 @@ struct CalculationWidget: View {
             NInput(onStart: onStart, isReset: isReset)
             HStack {
                 if executionTime != nil && n != nil {
-                    Text("\(executionTime!)μs; n = \(n!)").font(.system(size: 14))
+                    Text("\(executionTime!)ms; n = \(n!)").font(.system(size: 14))
                 }
             }.frame(width: 100)
         }.onChange(of: isReset) { newValue in

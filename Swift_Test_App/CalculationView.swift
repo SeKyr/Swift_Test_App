@@ -27,7 +27,7 @@ struct CalculationView: View {
     }
     
     func fibnonacciAlgorithm(n: Int) -> UInt64 {
-        return measureMicroTime {
+        return measureMilliTime {
             fib(n: n)
         }
     }
@@ -54,7 +54,7 @@ struct CalculationView: View {
             return [Int](0...n)
         }
         
-        return measureMicroTime {
+        return measureMilliTime {
             for row in 0..<n {
                 for col in 0..<n {
                     var cell: Int = 0;
@@ -73,7 +73,7 @@ struct CalculationView: View {
             return Int(doubleVal*1000)
         }
         
-        return measureMicroTime {
+        return measureMilliTime {
             for i in data {
                 self.insert(data: i)
             }
@@ -113,7 +113,7 @@ struct CalculationView: View {
         
         func reverseArrayAlgorithm(n: Int) -> UInt64 {
             let integerArray = [Int](0...n)
-            return measureMicroTime {
+            return measureMilliTime {
                 reverse(toReverse: integerArray)
             }
         }
@@ -129,15 +129,18 @@ struct CalculationView: View {
             return reversed
         }
         
-        func measureMicroTime(_ block: () -> Void) -> UInt64 {
+        func measureMilliTime(_ block: () -> Void) -> UInt64 {
+            let info = mach_timebase_info()
             let start = mach_absolute_time()
             //Block execution to time!
             block()
             let end = mach_absolute_time()
             
-            let elapsedNanos = end - start
+            let elapsed = end - start
             
-            return elapsedNanos / 1000
+            let elapsedNanos = elapsed * UInt64(info.numer) / UInt64(info.denom)
+            
+            return elapsedNanos / NSEC_PER_SEC
         }
 }
     
