@@ -27,7 +27,7 @@ struct Swift_Test_AppApp: App {
                         Image(systemName: "minus.forwardslash.plus")
                         Text("Calculation-View")
                     }.tag(1)
-                }.navigationBarTitle("Swift Test App").navigationBarTitleDisplayMode(.inline).tint(.red)
+                }.navigationBarTitle("Swift Test App").navigationBarTitleDisplayMode(.inline)
             }
         }
     }

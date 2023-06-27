@@ -129,18 +129,14 @@ struct CalculationView: View {
             return reversed
         }
         
-        func measureMilliTime(_ block: () -> Void) -> UInt64 {
-            let info = mach_timebase_info()
-            let start = mach_absolute_time()
-            //Block execution to time!
+    func measureMilliTime(_ block: () -> Void) -> UInt64 {
+            let start = DispatchTime.now()
             block()
-            let end = mach_absolute_time()
+            let end = DispatchTime.now()
             
-            let elapsed = end - start
+            let elapsedNanos = end.uptimeNanoseconds - start.uptimeNanoseconds
             
-            let elapsedNanos = elapsed * UInt64(info.numer) / UInt64(info.denom)
-            
-            return elapsedNanos / NSEC_PER_SEC
+            return elapsedNanos / NSEC_PER_MSEC
         }
 }
     
